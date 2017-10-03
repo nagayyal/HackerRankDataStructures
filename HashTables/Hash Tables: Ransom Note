@@ -1,0 +1,61 @@
+import java.util.*;
+
+public class Solution {
+    Map<String, Integer> magazineMap;
+    Map<String, Integer> noteMap;
+    
+    public Solution(String magazine, String note) {
+       // String magazineWords[]=magazine.split("[^a-zA-Z]+");
+        //String noteWords[]=note.split("[^a-zA-Z]+");
+        magazineMap=new HashMap<String, Integer>();
+        noteMap=new HashMap<String, Integer>();
+        
+        for(String word:magazine.split(" ")) {
+            if(magazineMap.containsKey(word)) {
+            magazineMap.put(word,magazineMap.get(word)+1);
+            }
+            else{
+                magazineMap.put(word,1);
+            } 
+        }
+          for(String word:note.split(" ")) {
+            if(noteMap.containsKey(word)) {
+            noteMap.put(word,noteMap.get(word)+1);
+            }
+            else{
+                noteMap.put(word,1);
+            } 
+        }
+        
+    }
+    
+    public boolean solve() {
+        for(String word:noteMap.keySet()) {
+            if(!magazineMap.containsKey(word) || (magazineMap.get(word)<noteMap.get(word))) {
+                return false;
+            }
+        }
+         return true;
+    }
+        
+ 
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int m = scanner.nextInt();
+        int n = scanner.nextInt();
+        
+        // Eat whitespace to beginning of next line
+        
+        scanner.nextLine();
+        
+        Solution s = new Solution(scanner.nextLine(), scanner.nextLine());
+        scanner.close();
+        
+        boolean answer = s.solve();
+        if(answer)
+            System.out.println("Yes");
+        else System.out.println("No");
+      
+    }
+}
