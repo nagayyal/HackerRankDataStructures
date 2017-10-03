@@ -1,0 +1,33 @@
+/*
+Detect a cycle in a linked list. Note that the head pointer may be 'null' if the list is empty.
+
+A Node is defined as: 
+    class Node {
+        int data;
+        Node next;
+    }
+*/
+
+boolean hasCycle(Node head) {
+    if(head==null)
+        return false;
+    Node temp1=head,temp2=head;
+     //if the faster pointer reaches end then no cycle
+    while(temp2!=null && temp2.next!=null){
+        
+        //move fast one by 2 steps and slow one by one
+   
+      temp1=temp1.next;
+    temp2=temp2.next.next;
+        
+        ////if the faster pointer reaches slow pointer or the slow one is right in front of the fast pointer then it is cyclic
+        //cyclic one does not have null
+    if(temp1==temp2 )
+    {
+        return true;
+    }  
+    }
+    return false;
+    }
+  
+   
