@@ -1,0 +1,47 @@
+/* you only have to complete the function given below.  
+Node is defined as  
+
+class Node {
+    int data;
+    Node left;
+    Node right;
+}
+
+*/
+
+void postOrder(Node root) {
+    if(root==null)
+        return;
+    Node current=root;
+    Stack<Node> useStack=new Stack<>();
+   // useStack.push(root);
+    while(current!=null || !useStack.isEmpty())
+          {
+             if(current!=null)
+             {
+                 useStack.push(current);
+                 current=current.left;
+             }
+        //leafnode
+        else{ //comes to else part when left ends
+            Node temp=useStack.peek().right;
+        if(temp==null)
+        {
+            temp=useStack.pop();
+            System.out.print(temp.data+" ");      
+        
+            
+         //if the value is  a right child   
+        while(temp==useStack.peek().right && useStack.peek().right!=null)
+        {
+            temp=useStack.pop();
+            System.out.print(temp.data+" ");
+        }
+        }
+            //some value in right chid
+            else{
+                current=temp;
+            }
+          }
+}
+}
