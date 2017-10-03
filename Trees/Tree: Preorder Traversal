@@ -1,0 +1,35 @@
+/* you only have to complete the function given below.  
+Node is defined as  
+
+class Node {
+    int data;
+    Node left;
+    Node right;
+}
+
+*/
+
+void preOrder(Node root) {
+    if(root==null)
+    {
+        return;
+    }
+    Stack<Node> stackValues=new Stack();
+    stackValues.push(root);
+    while(!stackValues.isEmpty())
+    {
+        Node tnode=stackValues.pop();
+        System.out.print(tnode.data+" ");
+        if(tnode.right!=null)
+        {
+            stackValues.push(tnode.right);
+        }
+        if(tnode.left!=null)
+        {
+            stackValues.push(tnode.left);
+        }
+    }
+
+    
+    
+}
