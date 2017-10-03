@@ -1,0 +1,41 @@
+/* you only have to complete the function given below.  
+Node is defined as  
+
+class Node {
+    int data;
+    Node left;
+    Node right;
+}
+
+*/
+
+void inOrder(Node root) {
+    if (root==null)
+        return;
+    Stack<Node> tnode=new Stack<Node>();
+    
+    while(true)
+    {  
+        if(root!=null)
+        {
+            tnode.push(root);
+            root=root.left;
+        }
+       
+        else{
+                  if(tnode.isEmpty())
+        {
+             break;
+         }
+
+            root=tnode.pop();
+            System.out.print(root.data+" ");
+            
+            root=root.right;
+            
+      
+        
+        }   
+        }
+    }
+
