@@ -1,0 +1,29 @@
+   /* 
+    
+    class Node 
+       int data;
+       Node left;
+       Node right;
+   */
+
+//leverl order+vertical order
+// after calculating the vertical list{for list>1: whichever node comes first in level order traversal is the answer}
+void topView(Node root)
+{
+    top_view(root, 0);
+}
+
+void top_view(Node root, int side)
+{
+    if (root != null) {
+        if (side <= 0) {
+            top_view(root.left, -1);
+        }
+        
+        System.out.print(root.data + " ");
+        
+        if (side >= 0) {
+            top_view(root.right, 1);
+        }
+    }
+}
