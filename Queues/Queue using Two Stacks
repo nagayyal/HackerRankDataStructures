@@ -1,0 +1,73 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+  static  Stack<Integer> s1=new Stack();
+   static Stack<Integer> s2=new Stack();
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scan=new Scanner(System.in);
+        int q=scan.nextInt();
+        for(int i=0;i<q;i++)
+        {
+            int type=scan.nextInt();
+            switch(type){
+                case 1:  
+                    int x=scan.nextInt();
+               enque(x);
+                    break;
+            case 2: deque();
+                    break;
+            case 3: firstelement();
+              
+            }
+        }
+    }
+    public static void enque(int x)
+    {
+        s1.push(x);
+        //System.out.println(s1.peek());
+        
+    }
+    public static void deque()
+    {
+        if(s2.isEmpty())
+        {
+        while(!s1.isEmpty())
+        {
+            s2.push(s1.pop());
+        }
+            
+        }
+        if(!s2.isEmpty())
+        {
+            s2.pop();
+        }
+     }
+    
+    public static void firstelement()
+    {
+        if(!s2.isEmpty())
+        {
+          //  System.out.println();
+            System.out.println(s2.peek());
+        }
+        else
+        {
+            while(!s1.isEmpty())
+            {
+            s2.push(s1.pop());
+            }
+           // System.out.println();
+            System.out.println(s2.peek());
+        }
+        
+        
+    }
+        
+    
+}
